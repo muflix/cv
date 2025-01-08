@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CV</title>
+	<link href='styles.css' rel='stylesheet' />
+
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+	<script type="text/javascript">
+		(function () {
+			emailjs.init({
+				publicKey: "5hx1sD6LH_KG1UmaI"
+			})
+		})()
+
+		window.onload = function () {
+			document.getElementById('contact-form').addEventListener('submit', function (event) {
+				event.preventDefault()
+
+				// Collecting form data
+				const templateParams = {
+					to_name: 'Eugene',
+					from_name: document.getElementById('name').value,
+					mail: document.getElementById('mail').value,
+					message: document.getElementById('text').value
+				}
+
+
+				emailjs.send('service_d1z6arl', 'template_5rv0iz4', templateParams) // Use templateParams
+					.then(() => {
+						console.log('SUCCESS!')
+						alert("Mail send!")
+						this.reset() // Clear form after sending
+					}, (error) => {
+						console.log('FAILED...', error)
+						alert("Send Error!")
+					})
+			})
+		};
+	</script>
+</head>
+
+<body>
+	<div class="container">
+		<div class='info'>
+			<img
+				src="https://scontent.fhrk7-1.fna.fbcdn.net/v/t1.6435-1/96660632_1099981057053490_3691952457417490432_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=110&ccb=1-7&_nc_sid=e99d92&_nc_ohc=4Cr5Yla1jyUQ7kNvgG1uQVi&_nc_zt=24&_nc_ht=scontent.fhrk7-1.fna&_nc_gid=Av5TmPkPjNcDiGWpsbelzEz&oh=00_AYB4LdPK1vIAIhTL2g8bd6GcgMd4l4T_vKpSJSJn7P_FkQ&oe=67A60CBC"
+				alt="Eugene Tolstokurov" class='avatar' />
+			<div class="info-text">
+				<h1>Eugene Tolstokurov</h1>
+				<p>Love <strong>codding</strong></p>
+				<p>Love traveling</p>
+
+				<h4>My social</h4>
+
+				<a href="https://www.instagram.com/muf.jpeg/?next=%2F" target='_blank'>Instagram</a> |
+				<a href="https://www.linkedin.com/in/eugene-tolstokurov-016b5a196/" target='_blank'>LinkedIn</a>
+			</div>
+		</div>
+		<div class="card bg-yellow">
+			<h2>My hobbies</h2>
+			<ol class='list'>
+				<li>Traveling</li>
+				<li>Sport: football</li>
+				<li>Driving</li>
+				<li>Computer gaming</li>
+			</ol>
+		</div>
+
+		<div class="card bg-green">
+			<h2>Work experience</h2>
+			<table class='table'>
+				<tr class='table-align'>
+					<th>Company</th>
+					<th>Position</th>
+					<th>Year</th>
+				</tr>
+				<tr>
+					<td>Solwey Consulting</td>
+					<td>Software Engineer</td>
+					<td>2022 - 2023</td>
+				</tr>
+			</table>
+		</div>
+
+		<div class="contact">
+
+			<h2>Contact me</h2>
+
+			<form id="contact-form">
+				<div class="row">
+					<div class="form-group">
+						<label for='name'>Your name:</label>
+						<input type="text" placeholder="Name" name="name" required id='name'>
+					</div>
+
+					<div class="form-group">
+						<label for='mail'>Your mail:</label>
+						<input type="email" placeholder="Email" name="mail" required id='mail'>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label for='text'>Your message:</label>
+					<textarea name="text" placeholder="Message..." required id='text'></textarea>
+				</div>
+
+				<input class='btn' type="submit" value="Send">
+			</form>
+		</div>
+
+	</div>
+
+</body>
+
+</html>
